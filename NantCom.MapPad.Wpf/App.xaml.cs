@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NantCom.MapPad.Core;
+using NantCom.MapPad.Core.Hubs;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +15,26 @@ namespace NantCom.MapPad.Wpf
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            if (e.Args.Any( s => s == "setupapp" ))
+            {
+                MetroAppSetup.Setup();
+
+                Application.Current.Shutdown();
+
+                return;
+            }
+
+            MapPadServer.Start();
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            MapPadServer.Stop();
+            GamePadHub.StopGamePad();
+
+            base.OnExit(e);
+        }
     }
 }

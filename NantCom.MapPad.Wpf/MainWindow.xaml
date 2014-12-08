@@ -1,9 +1,55 @@
-﻿<Window x:Class="NantCom.MapPad.Wpf.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="NantCom.MapPad.Wpf.MainWindow"
+        Title="NC MapPad" ResizeMode="NoResize" SizeToContent="WidthAndHeight" d:DesignWidth="566" ShowInTaskbar="False" ShowActivated="True" WindowStyle="None" Width="0" Height="0">
+    <Window.Resources>
+        <DataTemplate x:Key="TrayPopupTemplate">
+            <Grid Height="Auto">
+        		<Border Background="White" CornerRadius="2" Margin="10">
+        			<Border.Effect>
+        				<DropShadowEffect Opacity="0.5" BlurRadius="10"/>
+        			</Border.Effect>
+        			<Grid Width="Auto" Margin="5">
+        				<Grid.ColumnDefinitions>
+        					<ColumnDefinition Width="Auto"/>
+        					<ColumnDefinition/>
+        				</Grid.ColumnDefinitions>
 
-    </Grid>
+        				<Image HorizontalAlignment="Left" Height="Auto" VerticalAlignment="Top" Width="150" Source="Assets/logo.png"/>
+        				<StackPanel Grid.ColumnSpan="1" Orientation="Vertical" Grid.Column="1" Margin="10,0,0,0" Width="300">
+        					<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24"><Run Text="MapPad 0.1"/></TextBlock>
+        					<TextBlock TextWrapping="Wrap" Text="You can configure MapPad and download additional profiles from our Windows Store App. Click on button below to download." Width="Auto"/>
+        					<Image Margin="0,20,0,0" Source="Assets/storebadge.png" Stretch="Uniform" HorizontalAlignment="Left" VerticalAlignment="Top" Height="50"/>
+        				</StackPanel>
+        			</Grid>
+        		</Border>
+        	</Grid>
+        </DataTemplate>
+    </Window.Resources>
+
+    <tb:TaskbarIcon
+            x:Name="TaskBarIcon"
+          IconSource="Assets/mappad-trayicon.ico"
+          ToolTipText="NC MapPad">
+        <tb:TaskbarIcon.TrayPopup>
+            <ContentControl ContentTemplate="{StaticResource TrayPopupTemplate}"></ContentControl>
+        </tb:TaskbarIcon.TrayPopup>
+        <!-- Set a simple context menu  -->
+        <tb:TaskbarIcon.ContextMenu>
+            <ContextMenu>
+                <MenuItem IsCheckable="True" IsChecked="{Binding GamePadEnabled, Mode=OneWay}" Header="Enable MapPad" Click="EnableMap_Click"></MenuItem>
+                <Separator />
+                <MenuItem Header="Download Store App" Click="DownloadStoreApp_Click"></MenuItem>
+                <MenuItem Header="Connect Store App" Click="Connect_Click"></MenuItem>
+                <Separator />
+                <MenuItem Header="Exit" Click="Exit_Click"></MenuItem>
+            </ContextMenu>
+        </tb:TaskbarIcon.ContextMenu>
+
+
+    </tb:TaskbarIcon>
+
 </Window>

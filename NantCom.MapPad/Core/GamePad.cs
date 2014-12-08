@@ -35,13 +35,40 @@ namespace NantCom.MapPad.Core
     public static class Gamepad
     {
         public static event EventHandler<JoystickUpdateEventArgs> DataReceived = delegate { };
-                
+        
+        private static bool _IsRunning;
+
+        /// <summary>
+        /// Gets a value indicating whether Gampad is already accquired.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if this instance is polling; otherwise, <c>false</c>.
+        /// </value>
+        public static bool IsPolling
+        {
+            get
+            {
+                return _IsRunning;
+            }
+        }
+
+        public static DeviceInstance CurrentDevice
+        {
+            get;
+            private set;
+        }
+
         /// <summary>
         /// Starts polling default gamepad data.
         /// </summary>
         /// <param name="cancelToken">The cancel token.</param>
         public static DeviceInstance StartPolling( CancellationToken cancelToken )
         {
+            if (_IsRunning)
+            {
+                throw new InvalidOperationException("Already Polling");
+            }
+
             //http://www.codeproject.com/Articles/839229/OoB-Moving-webcam-with-joystick-and-servos-Arduino
             var di = new DirectInput();
             var devices = from d in di.GetDevices(DeviceClass.GameControl, DeviceEnumerationFlags.AttachedOnly)
@@ -58,6 +85,8 @@ namespace NantCom.MapPad.Core
             joystick.Properties.BufferSize = 128;
             joystick.Acquire();
 
+            _IsRunning = true;
+
             Task.Run(() =>
             {
                 using( di )
@@ -73,7 +102,12 @@ namespace NantCom.MapPad.Core
                         Thread.Sleep(20);
                     }
                 }
+
+                _IsRunning = false;
+                Gamepad.CurrentDevice = null;
             });
+
+            Gamepad.CurrentDevice = device;
 
             return device;
         }
