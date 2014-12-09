@@ -12,6 +12,8 @@ namespace NantCom.MapPad.Types
     /// </summary>
     public enum ScanCode : short
     {
+        NotMapped = -1,
+
         LBUTTON = 0,
         RBUTTON = 0,
         CANCEL = 70,
@@ -142,24 +144,6 @@ namespace NantCom.MapPad.Types
         RCONTROL = 29,
         LMENU = 56,
         RMENU = 56,
-        BROWSER_BACK = 106,
-        BROWSER_FORWARD = 105,
-        BROWSER_REFRESH = 103,
-        BROWSER_STOP = 104,
-        BROWSER_SEARCH = 101,
-        BROWSER_FAVORITES = 102,
-        BROWSER_HOME = 50,
-        VOLUME_MUTE = 32,
-        VOLUME_DOWN = 46,
-        VOLUME_UP = 48,
-        MEDIA_NEXT_TRACK = 25,
-        MEDIA_PREV_TRACK = 16,
-        MEDIA_STOP = 36,
-        MEDIA_PLAY_PAUSE = 34,
-        LAUNCH_MAIL = 108,
-        LAUNCH_MEDIA_SELECT = 109,
-        LAUNCH_APP1 = 107,
-        LAUNCH_APP2 = 33,
         OEM_1 = 39,
         OEM_PLUS = 13,
         OEM_COMMA = 51,
@@ -184,6 +168,8 @@ namespace NantCom.MapPad.Types
         NONAME = 0,
         PA1 = 0,
         OEM_CLEAR = 0,
+
+
     }
 
 

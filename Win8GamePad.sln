@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NantCom.MapPad.Profiler", "
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug Profiler|Any CPU = Debug Profiler|Any CPU
+		Debug Profiler|ARM = Debug Profiler|ARM
+		Debug Profiler|x64 = Debug Profiler|x64
+		Debug Profiler|x86 = Debug Profiler|x86
 		Debug|Any CPU = Debug|Any CPU
 		Debug|ARM = Debug|ARM
 		Debug|x64 = Debug|x64
@@ -21,6 +25,11 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26683C0F-C6B0-4EF2-A632-5CA2F48EEC9A}.Debug Profiler|Any CPU.ActiveCfg = Debug Profiler|Any CPU
+		{26683C0F-C6B0-4EF2-A632-5CA2F48EEC9A}.Debug Profiler|Any CPU.Build.0 = Debug Profiler|Any CPU
+		{26683C0F-C6B0-4EF2-A632-5CA2F48EEC9A}.Debug Profiler|ARM.ActiveCfg = Debug Profiler|Any CPU
+		{26683C0F-C6B0-4EF2-A632-5CA2F48EEC9A}.Debug Profiler|x64.ActiveCfg = Debug Profiler|Any CPU
+		{26683C0F-C6B0-4EF2-A632-5CA2F48EEC9A}.Debug Profiler|x86.ActiveCfg = Debug Profiler|Any CPU
 		{26683C0F-C6B0-4EF2-A632-5CA2F48EEC9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{26683C0F-C6B0-4EF2-A632-5CA2F48EEC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26683C0F-C6B0-4EF2-A632-5CA2F48EEC9A}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -31,6 +40,10 @@ Global
 		{26683C0F-C6B0-4EF2-A632-5CA2F48EEC9A}.Release|ARM.ActiveCfg = Release|Any CPU
 		{26683C0F-C6B0-4EF2-A632-5CA2F48EEC9A}.Release|x64.ActiveCfg = Release|Any CPU
 		{26683C0F-C6B0-4EF2-A632-5CA2F48EEC9A}.Release|x86.ActiveCfg = Release|Any CPU
+		{1497DF82-A201-4BBE-B252-717FEC78851E}.Debug Profiler|Any CPU.ActiveCfg = Debug Profiler|Any CPU
+		{1497DF82-A201-4BBE-B252-717FEC78851E}.Debug Profiler|ARM.ActiveCfg = Debug Profiler|Any CPU
+		{1497DF82-A201-4BBE-B252-717FEC78851E}.Debug Profiler|x64.ActiveCfg = Debug Profiler|Any CPU
+		{1497DF82-A201-4BBE-B252-717FEC78851E}.Debug Profiler|x86.ActiveCfg = Debug Profiler|Any CPU
 		{1497DF82-A201-4BBE-B252-717FEC78851E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1497DF82-A201-4BBE-B252-717FEC78851E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1497DF82-A201-4BBE-B252-717FEC78851E}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -41,6 +54,18 @@ Global
 		{1497DF82-A201-4BBE-B252-717FEC78851E}.Release|ARM.ActiveCfg = Release|Any CPU
 		{1497DF82-A201-4BBE-B252-717FEC78851E}.Release|x64.ActiveCfg = Release|Any CPU
 		{1497DF82-A201-4BBE-B252-717FEC78851E}.Release|x86.ActiveCfg = Release|Any CPU
+		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug Profiler|Any CPU.ActiveCfg = Debug Profiler|Any CPU
+		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug Profiler|Any CPU.Build.0 = Debug Profiler|Any CPU
+		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug Profiler|Any CPU.Deploy.0 = Debug Profiler|Any CPU
+		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug Profiler|ARM.ActiveCfg = Debug Profiler|ARM
+		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug Profiler|ARM.Build.0 = Debug Profiler|ARM
+		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug Profiler|ARM.Deploy.0 = Debug Profiler|ARM
+		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug Profiler|x64.ActiveCfg = Debug Profiler|x64
+		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug Profiler|x64.Build.0 = Debug Profiler|x64
+		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug Profiler|x64.Deploy.0 = Debug Profiler|x64
+		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug Profiler|x86.ActiveCfg = Debug Profiler|x86
+		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug Profiler|x86.Build.0 = Debug Profiler|x86
+		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug Profiler|x86.Deploy.0 = Debug Profiler|x86
 		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51C7AAFA-8265-4420-8C20-FC9160CF1A39}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
