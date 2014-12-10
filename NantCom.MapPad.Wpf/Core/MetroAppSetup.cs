@@ -7,7 +7,6 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using Windows.Management.Deployment;
 
 namespace NantCom.MapPad.Core
 {
