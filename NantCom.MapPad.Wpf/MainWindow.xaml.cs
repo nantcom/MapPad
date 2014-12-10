@@ -43,6 +43,18 @@ namespace NantCom.MapPad.Wpf
             InitializeComponent();
 
             this.DataContext = this;
+
+            GamePadHub.DeviceError += () =>
+            {
+                this.Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    this.TaskBarIcon.ShowBalloonTip("NC MapPad",
+                        "Device disconnected",
+                        Hardcodet.Wpf.TaskbarNotification.BalloonIcon.Error);
+
+                    this.PropertyChanged(this, new PropertyChangedEventArgs("GamePadEnabled"));
+                }));
+            };
         }
 
         protected override void OnActivated(EventArgs e)
@@ -107,10 +119,17 @@ namespace NantCom.MapPad.Wpf
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            var answer = MessageBox.Show("Your Game Pad will stop being mapped. Sure about that? ", "Stop MapPad",
-                MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (Gamepad.IsPolling)
+            {
+                var answer = MessageBox.Show("Your Game Pad will stop being mapped. Sure about that? ", "Stop MapPad",
+                    MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            if (answer == MessageBoxResult.Yes)
+                if (answer == MessageBoxResult.Yes)
+                {
+                    this.Close();
+                }
+            }
+            else
             {
                 this.Close();
             }

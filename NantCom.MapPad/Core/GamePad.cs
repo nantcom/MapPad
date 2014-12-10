@@ -35,7 +35,9 @@ namespace NantCom.MapPad.Core
     public static class Gamepad
     {
         public static event EventHandler<JoystickUpdateEventArgs> DataReceived = delegate { };
-        
+
+        public static event Action DeviceError = delegate { };
+             
         private static bool _IsRunning;
 
         /// <summary>
@@ -94,12 +96,21 @@ namespace NantCom.MapPad.Core
                 {
                     while (cancelToken.IsCancellationRequested == false)
                     {
-                        var data = joystick.GetBufferedData();
-                        if (data.Length > 0)
+                        try
                         {
-                            Gamepad.DataReceived(null, new JoystickUpdateEventArgs(data));
+                            var data = joystick.GetBufferedData();
+                            if (data.Length > 0)
+                            {
+                                Gamepad.DataReceived(null, new JoystickUpdateEventArgs(data));
+                            }
+                            Thread.Sleep(20);
                         }
-                        Thread.Sleep(20);
+                        catch (Exception)
+                        {
+                            // usually device was disconnected
+                            Gamepad.DeviceError();
+                            break;
+                        }
                     }
                 }
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.SignalR;
+using NantCom.MapPad.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,13 +25,27 @@ namespace NantCom.MapPad.Core.Hubs
             return Gamepad.CurrentDevice.ProductName;
         }
 
+        public void SetProfile( MappingProfile p)
+        {
+            MapPad.SetProfile(p);
+        }
+
+        public void ClearMappings()
+        {
+            
+        }
+
         private static CancellationTokenSource _Cancel;
+
+        public static event Action DeviceError = delegate { };
 
         /// <summary>
         /// Starts the game pad.
         /// </summary>
         public static void StartGamePad()
         {
+            MapPad.IsEnabled = true;
+
             if (Gamepad.IsPolling == false)
             {
                 _Cancel = new CancellationTokenSource();
@@ -48,6 +63,7 @@ namespace NantCom.MapPad.Core.Hubs
         /// </summary>
         public static void StopGamePad()
         {
+            MapPad.IsEnabled = false;
             if (_Cancel != null)
             {
                 _Cancel.Cancel();
@@ -58,6 +74,12 @@ namespace NantCom.MapPad.Core.Hubs
 
         private static void Initialize()
         {
+            Gamepad.DeviceError += () =>
+            {
+                GamePadHub.DeviceError();
+                GamePadHub.CurrentContext.Clients.All.gamepadDisconnected();
+            };
+
             Gamepad.DataReceived += (s, e) =>
             {
                 foreach (var item in e.JoystickUpdate)

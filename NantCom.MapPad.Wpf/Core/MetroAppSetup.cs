@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Windows.Management.Deployment;
 
 namespace NantCom.MapPad.Core
@@ -55,7 +56,9 @@ namespace NantCom.MapPad.Core
             {
                 targetApp.LoopUtil = true;
                 loopUtil.SaveLoopbackState();
-            } 
+            }
+
+            MessageBox.Show("NC MapPad App was configured Successfully", "Done!", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
