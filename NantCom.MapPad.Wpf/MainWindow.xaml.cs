@@ -43,6 +43,7 @@ namespace NantCom.MapPad.Wpf
             InitializeComponent();
 
             this.DataContext = this;
+            this.Left = -1;
 
             GamePadHub.DeviceError += () =>
             {
@@ -57,9 +58,16 @@ namespace NantCom.MapPad.Wpf
             };
         }
 
+        private bool _IsRun;
         protected override void OnActivated(EventArgs e)
         {
+            if (_IsRun == true)
+            {
+                return;
+            }
+
             this.EnableMap_Click(null, null);
+            _IsRun = true;
         }
 
         private void DownloadStoreApp_Click(object sender, RoutedEventArgs e)

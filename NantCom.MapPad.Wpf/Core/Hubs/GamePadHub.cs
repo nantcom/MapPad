@@ -86,6 +86,8 @@ namespace NantCom.MapPad.Core.Hubs
                 {
                     GamePadHub.CurrentContext.Clients.All.gamepadStatus(item);
                 }
+
+                GamePadHub.CurrentContext.Clients.All.gamepadConnected(Gamepad.CurrentDevice);
             };
         }
 
