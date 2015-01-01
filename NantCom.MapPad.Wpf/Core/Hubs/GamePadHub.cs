@@ -25,7 +25,7 @@ namespace NantCom.MapPad.Core.Hubs
             return Gamepad.CurrentDevice.ProductName;
         }
 
-        public void SetProfile( MappingProfile p)
+        public void SetProfile( MappingProfile p )
         {
             MapPad.SetProfile(p);
         }
@@ -33,6 +33,15 @@ namespace NantCom.MapPad.Core.Hubs
         public void ClearMappings()
         {
             
+        }
+
+        /// <summary>
+        /// Get process list from local machine
+        /// </summary>
+        /// <returns></returns>
+        public List<SimpleProcess> GetProcesses()
+        {
+            return ProcessMonitor.GetProcesses().ToList();
         }
 
         private static CancellationTokenSource _Cancel;

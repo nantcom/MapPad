@@ -34,15 +34,12 @@
             x:Name="TaskBarIcon"
           IconSource="Assets/mappad-trayicon.ico"
           ToolTipText="NC MapPad">
-        <tb:TaskbarIcon.TrayPopup>
-            <ContentControl ContentTemplate="{StaticResource TrayPopupTemplate}"></ContentControl>
-        </tb:TaskbarIcon.TrayPopup>
+        
         <!-- Set a simple context menu  -->
         <tb:TaskbarIcon.ContextMenu>
             <ContextMenu>
                 <MenuItem IsCheckable="True" IsChecked="{Binding GamePadEnabled, Mode=OneWay}" Header="Enable MapPad" Click="EnableMap_Click"></MenuItem>
                 <Separator />
-                <MenuItem Header="Download Store App" Click="DownloadStoreApp_Click"></MenuItem>
                 <MenuItem Header="Connect Store App" Click="Connect_Click"></MenuItem>
                 <Separator />
                 <MenuItem Header="Exit" Click="Exit_Click"></MenuItem>

@@ -153,16 +153,16 @@ namespace NantCom.MapPad.Types
                 this.OnPropertyChanged("ProfileName");
             }
         }
-				
-			
 
         /// <summary>
-        /// Gets or sets the profile image.
+        /// Image for this profile
         /// </summary>
-        /// <value>
-        /// The image.
-        /// </value>
         public string Image { get; set; }
+
+        /// <summary>
+        /// Name of the process, if blank - the profile will be set as running profile
+        /// </summary>
+        public string ProcessName { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MappingProfile"/> class.

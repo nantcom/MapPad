@@ -16,12 +16,12 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://mappad.nant.co/</InstallUrl>
     <SupportUrl>http://mappad.nant.co</SupportUrl>
-    <ProductName>NC MapPad</ProductName>
+    <ProductName>NC MapPad Desktop App</ProductName>
     <PublisherName>NantCom Co., Ltd.</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -163,8 +163,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\Hubs\GamePadHub.cs" />
+    <Compile Include="Core\MapPadProfile.cs" />
     <Compile Include="Core\MapPadServer.cs" />
     <Compile Include="Core\MetroAppSetup.cs" />
+    <Compile Include="Core\ProcessMonitor.cs" />
+    <Compile Include="Core\SimpleProcess.cs" />
     <Compile Include="Lib\LoopUtil.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

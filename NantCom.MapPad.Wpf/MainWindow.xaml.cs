@@ -25,6 +25,8 @@ namespace NantCom.MapPad.Wpf
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        private CancellationTokenSource _Cancel = new CancellationTokenSource();
+
         ///<summary>
         ///Get or set the value of GamePadEnabled
         ///</summary>
@@ -43,7 +45,7 @@ namespace NantCom.MapPad.Wpf
             InitializeComponent();
 
             this.DataContext = this;
-            this.Left = -1;
+            this.Visibility = System.Windows.Visibility.Collapsed;
 
             GamePadHub.DeviceError += () =>
             {
@@ -66,35 +68,27 @@ namespace NantCom.MapPad.Wpf
                 return;
             }
 
-            this.EnableMap_Click(null, null);
             _IsRun = true;
+
+            this.EnableMap_Click(null, null);
+            MapPadProfile.StartProfileByProcessMapping(_Cancel.Token);
+
         }
 
         private void DownloadStoreApp_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start("start http://nant.co/mappad");
+            
         }
 
         private void Connect_Click(object sender, RoutedEventArgs e)
         {
-            var answer = MessageBox.Show(
-                "For security reason, NC MapPad app will not be able to connect to it's Desktop counterpart without your permission.\r\n\r\n" +
-                "You will have to Press 'Yes' in the following User Account Control to allow NC MapPad app to connect.\r\n\r\n" +
-                "Do you want to do that now?"
-                , "Connect MapPad App",
-
-                MessageBoxButton.OKCancel, MessageBoxImage.Question);
-
-            if (answer == MessageBoxResult.Cancel)
-            {
-                return;
-            }
 
             MetroAppSetup.Setup();
         }
 
         private void EnableMap_Click(object sender, RoutedEventArgs e)
         {
+
             if (Gamepad.IsPolling == false)
             {
                 GamePadHub.StartGamePad();
@@ -134,6 +128,8 @@ namespace NantCom.MapPad.Wpf
 
                 if (answer == MessageBoxResult.Yes)
                 {
+                    GamePadHub.StopGamePad();
+                    _Cancel.Cancel();
                     this.Close();
                 }
             }
