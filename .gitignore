@@ -1,10 +1,7 @@
 /packages
-/NantCom.MapPad.Profiler/Assets
-/NantCom.MapPad.Profiler/Assets
-/NantCom.MapPad.Profiler/bin
-/NantCom.MapPad.Profiler/obj
-/NantCom.MapPad.Wpf/bin
-/NantCom.MapPad.Wpf/obj
+
+bin
+obj
 *.db
 *.user
 *.suo
